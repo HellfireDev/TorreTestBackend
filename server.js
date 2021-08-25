@@ -18,6 +18,13 @@ app.get('/', (req, res) => { res.json('It is working') });
 app.post('/register', (req, res) => { handleRegister(req, res, db, bcrypt) });
 app.post('/signin', (req, res) => { handleSignin(req, res, db, bcrypt) });
 
+//App services
+//app.post('/profile') -> returns logged user top 3 jobs, skills, desired jobs and desired skills
+//app.post('/combo') -> returns logged user top 3 jobs and top 3 mentors based on selection of the above criteria, must pick one of each and then submit to request
+
+//Dont forget to put powered by torre somewhere in the ui
+//Detailed view for mentors and jobs only if there's time, better focus on nice cards and responsive design, include links to view details on torre itself
+
 //Get user bio
 // const torreUserId = 'jaimedtorres';
 // const searchSize = 5;
