@@ -1,4 +1,4 @@
-const { appConfig: { searchSize } } = require('../config/appconfig');
+const { appConfig: { searchSize } } = require('../config/appConfig');
 const { torreEndpoints: { searchJobs, searchBios } } = require('../config/torreEndpoints');
 const { comboBuilder } = require('../helpers/comboBuilder');
 
