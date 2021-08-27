@@ -1,30 +1,18 @@
 const knex = require('knex');
 const { selectDb } = require('../helpers/selectDb');
 
-//Create PostgreSQL DB
+//Create local PostgreSQL DB
 
-//Remote DB
 const base_db = knex({
     client: 'pg',
     connection: {
-        connectionString: process.env.DATABASE_URL,
-        ssl: {
-            rejectUnauthorized: false
-        }
+        host: '127.0.0.1',
+        user: 'postgres',
+        password: 'blue',
+        database: 'postgres',
+        charset: 'utf8'
     }
 });
-
-//Local DB 
-// const base_db = knex({
-//     client: 'pg',
-//     connection: {
-//         host: '127.0.0.1',
-//         user: 'postgres',
-//         password: 'blue',
-//         database: 'postgres',
-//         charset: 'utf8'
-//     }
-// });
 
 const dbName = 'herosj';
 

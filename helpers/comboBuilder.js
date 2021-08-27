@@ -5,7 +5,7 @@ const { appConfig:
         language,
         fluency,
         mentoring
-    } } = require("../config/appconfig");
+    } } = require("../config/appConfig");
 const { fetchPost } = require("./fetchPost");
 const { randArrItems } = require("./randArrItems");
 
