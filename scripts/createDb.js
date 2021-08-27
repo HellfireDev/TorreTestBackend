@@ -1,16 +1,30 @@
 const knex = require('knex');
+const { selectDb } = require('../helpers/selectDb');
 
-//Create a local PostgreSQL DB
+//Create PostgreSQL DB
+
+//Remote DB
 const base_db = knex({
     client: 'pg',
     connection: {
-        host: '127.0.0.1',
-        user: 'postgres',
-        password: 'blue',
-        database: 'postgres',
-        charset: 'utf8'
+        connectionString: process.env.DATABASE_URL,
+        ssl: {
+            rejectUnauthorized: false
+        }
     }
 });
+
+//Local DB 
+// const base_db = knex({
+//     client: 'pg',
+//     connection: {
+//         host: '127.0.0.1',
+//         user: 'postgres',
+//         password: 'blue',
+//         database: 'postgres',
+//         charset: 'utf8'
+//     }
+// });
 
 const dbName = 'herosj';
 
@@ -49,7 +63,7 @@ const createTables = () => {
             table.increments('id').primary();
             table.string('name', 100).notNullable();
             table.string('torreid', 50).notNullable().unique();
-        }).then(()=>resolve('Users table successfully created!')
+        }).then(() => resolve('Users table successfully created!')
         ).catch(error => {
             base_db.raw(`DROP DATABASE ${dbName};`);
             reject(error);
